@@ -6,7 +6,6 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd());
     return {
-        // 这里的名称要和主应用改造是配置项中的name保持一致
         plugins: [vue()],
         server: {
             open: true,
@@ -18,9 +17,8 @@ export default defineConfig(({ mode }) => {
                     rewrite: (path) => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ""),
                 },
             },
-            // 防止开发阶段的assets 静态资源加载问题
         },
-        base: "./",
+        base: "/love/",
         resolve: {
             alias: {
                 "@": fileURLToPath(new URL("./src", import.meta.url)),
